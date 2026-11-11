@@ -1,10 +1,24 @@
-public class AppTest {
-    public static void main(String[] args) {
-        int result = App.add(2, 3);
-        if (result != 5) {
-            System.out.println("TEST FAILED: expected 5 but got " + result);
-            System.exit(1);
+pipeline {
+    agent any
+    triggers { githubPush() }
+
+    stages {
+        stage('Checkout') {
+            steps { checkout scm }
         }
-        System.out.println("TEST PASSED");
+        stage('Build') {
+            steps {
+                bat 'javac -version'
+                bat 'javac App.java AppTest.java'
+            }
+        }
+        stage('Test') {
+            steps { bat 'java AppTest' }
+        }
+    }
+
+    post {
+        success { echo 'Build stable' }
+        failure { echo 'Build failed' }
     }
 }

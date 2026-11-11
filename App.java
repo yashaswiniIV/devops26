@@ -4,7 +4,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println("7 + 91 = " + add(7, 9));
+        System.out.println("17 + 91 = " + add(17, 9));
         System.out.println("hello");
     }
 }

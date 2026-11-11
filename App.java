@@ -5,6 +5,6 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println("7 + 91 = " + add(7, 9));
-        System.out.println("hey");
+        System.out.println("hello");
     }
 }
